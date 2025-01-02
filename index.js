@@ -5,12 +5,15 @@ env.config();
 const mongoose = require('mongoose');
 const MONGO_URI = process.env.MONGO_URI;
 const userRoutes = require('./routes/user');
+const jobRoutes = require('./routes/job')
 const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 
 app.use("/api/user", userRoutes);
+app.use("/api/job", jobRoutes);
+
 
 app.get("/",(req,res)=>{
     res.send("Hello World!!!")
