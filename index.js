@@ -6,7 +6,14 @@ const mongoose = require('mongoose');
 const MONGO_URI = process.env.MONGO_URI;
 const userRoutes = require('./routes/user');
 const jobRoutes = require('./routes/job')
+const cors = require('cors');
 const PORT = process.env.PORT || 3000;
+
+app.use(cors(
+    {
+        origin: 'http://localhost:5173'
+    }
+))
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
