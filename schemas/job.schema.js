@@ -1,19 +1,31 @@
 const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
-    title: {
+    company: {
         type: String,
         required: true
     },
-    description: {
+    role: {
         type: String,
         required: true,
     },
     salary: {
-        type: Number,
+        type: String,
         required: true
     },
     location: {
         type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    workmode: {
+        type: String,
+        required: true
+    },
+    skills: {
+        type: [String],
         required: true
     },
     userId: {
