@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const schema = new mongoose.Schema({
+    companyName: {
+        type: String,
+        required: true
+    },
     company: {
         type: String,
         required: true
@@ -9,7 +13,7 @@ const schema = new mongoose.Schema({
         required: true,
     },
     salary: {
-        type: String,
+        type: String,  
         required: true
     },
     location: {
@@ -26,6 +30,18 @@ const schema = new mongoose.Schema({
     },
     skills: {
         type: [String],
+        required: true
+    },
+    jobDescription: {
+        type: String,
+        required: true
+    },
+    aboutCompany: {
+        type: String,
+        required: true
+    },
+    additionalInfo: {
+        type: String,
         required: true
     },
     userId: {

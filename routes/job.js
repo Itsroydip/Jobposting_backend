@@ -34,9 +34,9 @@ router.get("/:id", async (req,res)=>{
 
 router.post("/create", isLoggedIn, async (req,res)=>{
     try {
-        const {company, role, salary, location, type, workmode, skills} = req.body;
+        const {companyName, company, role, salary, location, type, workmode, skills, jobDescription, aboutCompany, additionalInfo} = req.body;
         const user = await User.findOne({email: req.user.email});
-        const newJob = await new Job({company, role, salary, location, type, workmode, skills, userId: user._id}).save();
+        const newJob = await new Job({companyName, company, role, salary, location, type, workmode, skills, jobDescription, aboutCompany, additionalInfo, userId: user._id}).save();
         return res.status(200).json({message: "Job created successfully", id: newJob._id});
     } catch (err) {
         console.log(err)
@@ -47,13 +47,14 @@ router.post("/create", isLoggedIn, async (req,res)=>{
 
 router.put("/:id", isLoggedIn, async (req,res)=>{
     try {
-        const {company, role, salary, location, type, workmode, skills} = req.body;
+        const {companyName, company, role, salary, location, type, workmode, skills, jobDescription, aboutCompany, additionalInfo} = req.body;
         const user = await User.findOne({email: req.user.email});
         const job = await Job.findOne({_id: req.params.id, userId: user._id});
 
         if(!job)
             return res.status(400).json({message: "Job not found"});
     
+        job.companyName = companyName;
         job.company = company;
         job.role = role;
         job.salary = salary;
@@ -61,6 +62,9 @@ router.put("/:id", isLoggedIn, async (req,res)=>{
         job.type = type;
         job.workmode = workmode;
         job.skills = skills;  
+        job.jobDescription = jobDescription;
+        job.aboutCompany = aboutCompany;
+        job.additionalInfo = additionalInfo;
         await job.save();      
         return res.status(200).json({message: "Job updated successfully"});
 
