@@ -14,7 +14,7 @@ const schema = new mongoose.Schema({
     },
     salary: {
         type: String,  
-        required: true
+        default: "Not Disclosed"
     },
     location: {
         type: String,
@@ -22,11 +22,11 @@ const schema = new mongoose.Schema({
     },
     type: {
         type: String,
-        required: true
+        default: "Fulltime"
     },
     workmode: {
         type: String,
-        required: true
+        default: "Office"
     },
     skills: {
         type: [String],
@@ -41,8 +41,7 @@ const schema = new mongoose.Schema({
         required: true
     },
     additionalInfo: {
-        type: String,
-        required: true
+        type: String
     },
     userId: {
         type: mongoose.Schema.Types.ObjectId,

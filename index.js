@@ -28,10 +28,7 @@ app.get("/",(req,res)=>{
 
 app.listen(PORT,()=>{
     console.log("Listening at port 3000....")
-    mongoose.connect(MONGO_URI,{
-        useNewUrlParser:true,
-        useUnifiedTopology:true
-    })
+    mongoose.connect(MONGO_URI)
     .then(()=>{
         console.log("Connected to MongoDB.......")
     })
